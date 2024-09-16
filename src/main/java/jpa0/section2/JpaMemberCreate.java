@@ -1,9 +1,10 @@
-package section2;
+package jpa0.section2;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
+import jpa0.Member;
 
 /**
  * 2. Hello JPA - 애플리케이션 개발
@@ -24,7 +25,7 @@ public class JpaMemberCreate {
         //트랜잭션 시작
         tx.begin();
 
-        //`JPA`를 이용해서, `Member`를 데이터베이스에 `저장`한다.
+        //`JPA`를 이용해서, `jpa0.Member`를 데이터베이스에 `저장`한다.
         try {
             Member member = new Member();
             member.setId(1L);

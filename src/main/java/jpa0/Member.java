@@ -1,4 +1,4 @@
-package section2;
+package jpa0;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

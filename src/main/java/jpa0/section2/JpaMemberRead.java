@@ -1,10 +1,9 @@
-package section2;
+package jpa0.section2;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
-
-import java.util.List;
+import jpa0.Member;
 
 /**
  * 2. Hello JPA - 애플리케이션 개발
@@ -13,26 +12,17 @@ import java.util.List;
  * `EntityManagerFactory`는 하나만 생성해서, 애플리케이션 전체에서 공유
  * `EntityManager`은 쓰레드간에 공유하면 안 된다. -> 한 명의 사용자만 사용
  */
-public class JpaMemberReadWithCondition {
+public class JpaMemberRead {
 
     public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("hello");
 
         EntityManager em = emf.createEntityManager();
 
-        //`JPQL`을 사용 -> 엔티티 객체를 대상으로 조회한다.
-        //`JPQL`을 이용해서, `Member`를 데이터베이스에서 `조건에 맞게 조회`한다.
-        List<Member> findMembers = em.createQuery("select m from Member m", Member.class)
-                //== 페이징 부분 시작 ==
-                .setFirstResult(1)
-                .setMaxResults(2)
-                //== 페이징 부분 끝 ==
-                .getResultList();
-
-        for (Member findMember : findMembers) {
-            System.out.println("findMember.id = " + findMember.getId());
-            System.out.println("findMember.name = " + findMember.getName());
-        }
+        //`JPA`를 이용해서, `jpa0.Member`를 데이터베이스에서 `조회`한다.
+        Member findMember = em.find(Member.class, 1L);
+        System.out.println("findMember.id = " + findMember.getId());
+        System.out.println("findMember.name = " + findMember.getName());
 
         em.close();
         emf.close();
