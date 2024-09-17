@@ -36,7 +36,10 @@ public class PersistenceContextRemoved {
             Member findMember = em.find(Member.class, 700L);
             System.out.println("== 조회 종료==");
 
-            //em.remove(entity)를 호출하면, 어차피 삭제될 `Entity`인 걸 알고, 업데이트 할 필요가 없으므로, 업데이트 쿼리문은 날아가지 않는다.
+            //***
+            //em.remove(entity)를 호출하면, 어차피 삭제될 `Entity`인 걸 알고,
+            //업데이트 할 필요가 없으므로, 업데이트 쿼리문은 날아가지 않는다.
+            //***
             findMember.setName("section4 Delete_Member -> change_name");
 
             em.remove(member);
