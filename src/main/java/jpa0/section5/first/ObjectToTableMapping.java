@@ -17,10 +17,10 @@ import jakarta.persistence.Table;
  * `ObjectToTableMapping 클래스`는 `user 테이블`에 맵핑된다.
  * select * from user -> `SQL`에서 접근할 때, `user 테이블`에 접근한다.
  */
-@Entity
+//@Entity
 public class ObjectToTableMapping {
 
-    @Id
+//    @Id
     private Long id;
     private String username;
 

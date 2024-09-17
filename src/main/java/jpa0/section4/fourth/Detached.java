@@ -45,10 +45,8 @@ public class Detached {
         } catch (Exception e) {
             tx.rollback();
         } finally {
-
+            em.close();
         }
-
         emf.close();
-
     }
 }
