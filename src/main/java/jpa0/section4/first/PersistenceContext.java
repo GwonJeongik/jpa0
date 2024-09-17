@@ -1,4 +1,4 @@
-package jpa0.section3.first;
+package jpa0.section4.first;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -32,11 +32,12 @@ public class PersistenceContext {
         EntityTransaction tx = em.getTransaction();
         //트랜잭션 시작
         tx.begin();
+
         try {
             //비영속 -> 객체를 생성한 상태
             Member member = new Member();
             member.setId(100L);
-            member.setName("section3 MemberA");
+            member.setName("section4 MemberA");
 
             //영속 -> 객체를 저장한 상태
             System.out.println("== BEFORE ==");

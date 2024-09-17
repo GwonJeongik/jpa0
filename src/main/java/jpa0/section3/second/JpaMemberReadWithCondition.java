@@ -1,4 +1,4 @@
-package jpa0.section2;
+package jpa0.section3.second;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;

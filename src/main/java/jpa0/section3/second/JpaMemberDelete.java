@@ -1,4 +1,4 @@
-package jpa0.section2;
+package jpa0.section3.second;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -13,7 +13,7 @@ import jpa0.Member;
  * `EntityManagerFactory`는 하나만 생성해서, 애플리케이션 전체에서 공유
  * `EntityManager`은 쓰레드간에 공유하면 안 된다. -> 한 명의 사용자만 사용
  */
-public class JpaMemberCreate {
+public class JpaMemberDelete {
 
     public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("hello");
@@ -25,13 +25,11 @@ public class JpaMemberCreate {
         //트랜잭션 시작
         tx.begin();
 
-        //`JPA`를 이용해서, `jpa0.Member`를 데이터베이스에 `저장`한다.
+        //`JPA`를 이용해서, `jpa0.Member`를 데이터베이스에 `삭제`한다.
         try {
-            Member member = new Member();
-            member.setId(1L);
-            member.setName("section2 MemberA");
+            Member findMember = em.find(Member.class, 1L);
 
-            em.persist(member);
+            em.remove(findMember);
 
             tx.commit();
         } catch (Exception e) {
