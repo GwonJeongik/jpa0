@@ -37,8 +37,8 @@ public class PersistenceContextFirstCache {
 
             System.out.println("== BEFORE ==");
             System.out.println("캐시에서 가져오는 게 아니라면, 회원을 찾는 쿼리가 나가야함");
-            //1차 캐시에 찾는 데이터가 있을 때,
-            //1차 캐시에 있는 데이터를 꺼내옴
+            //1차 캐시에 찾는 데이터가 있으면,
+            //1차 캐시에 있는 데이터를 꺼내온다.
             Member findMember = em.find(Member.class, 200L);
             System.out.println("== AFTER  ==");
 

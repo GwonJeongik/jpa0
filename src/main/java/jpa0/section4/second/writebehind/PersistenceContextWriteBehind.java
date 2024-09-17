@@ -1,4 +1,4 @@
-package jpa0.section4.second.writedelay;
+package jpa0.section4.second.writebehind;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -15,7 +15,7 @@ import jpa0.Member;
  * 쓰기 지연 SQL 저장소에 인설트(insert) 쿼리문을 저장한다.
  * 트랜잭션 커밋 직전에 저장된 쿼리문을 데이터 베이스에 전달해서 회원을 등록한다.
  */
-public class PersistenceContextWriteDelay {
+public class PersistenceContextWriteBehind {
 
     public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("hello");

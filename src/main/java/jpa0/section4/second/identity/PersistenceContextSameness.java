@@ -1,4 +1,4 @@
-package jpa0.section4.second.sameness;
+package jpa0.section4.second.identity;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
