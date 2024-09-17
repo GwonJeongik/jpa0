@@ -52,7 +52,6 @@ public class FieldToColumnMapping {
 
     //Getter & Setter
 
-
     public Long getId() {
         return id;
     }
