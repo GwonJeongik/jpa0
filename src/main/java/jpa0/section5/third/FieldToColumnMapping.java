@@ -20,9 +20,9 @@ import java.time.LocalDateTime;
  * `@Enumerated(EnumType.ORDINAL)` -> `enum` 순서를 데이터베이스에 저장 -> `enum`에  순서가 바뀌면 꼬여버린다.
  * `@Enumerated(EnumType.STRING)` -> `enum` 이름을 데이터베이스에 저장 -> 이것만 `사용`해야 한다.
  * [번외]
- * @Table(uniqueConstraints = {@UniqueConstraint(columnNames = "name")}) -> 유니크 제약조건은 테이블에 걸어준다.
+ * @Table(uniqueConstraints={@UniqueConstraint(columnNames="name")}) -> 유니크 제약조건은 테이블에 걸어준다.
  * `primary key`와 `uniqueConstraint[유니크 제약조건]` 차이점 : `null`이어도 `되냐` `안 되냐`
- * @Column(name = "name", length = 10, nullable = false, insertable = false, updatable = false)
+ * @Column(name="name",length=10,nullable=false,insertable=false,updatable=false)
  * 이 부분은 유추 가능하니 자세한 설명은 생략한다.
  */
 @Entity
