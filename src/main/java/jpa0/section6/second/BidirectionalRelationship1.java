@@ -25,7 +25,7 @@ import java.util.List;
  * `1`쪽이 주인이 아니다. = OneToMany(mappedBy = "team")
  * `mappedBy`는 주인이 아니다. -> 읽기만 가능하다.
  */
-public class BidirectionalRelationship {
+public class BidirectionalRelationship1 {
 
     public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("hello");

@@ -22,6 +22,12 @@ public class Fellow {
     @JoinColumn(name = "team_id")
     private Team team;
 
+    //섹션6-3, 양방향 연관관계에서 `team`을 넣어줄 때, `team`에도 `Fellow`를 넣어준다.
+    public void changeTeam(Team team) {
+        this.team = team;
+        team.getFellows().add(this); //add(this) : `this`는 자기 자신 [Fellow]를 넣어준다.
+    }
+
     //Getter & Setter
 
     public Long getId() {
