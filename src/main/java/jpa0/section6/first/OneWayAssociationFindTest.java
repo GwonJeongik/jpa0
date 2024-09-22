@@ -1,13 +1,17 @@
-package jpa0.section6.onewayassociation;
+package jpa0.section6.first;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
+import jpa0.section6.Fellow;
+import jpa0.section6.Team;
 
 /**
  * 1. 단방향 연관관계
  * 단방향 연관관계 [Fellow -> Team] 테스트
+ * `Fellow`를 찾는다.
+ * `Fellow`가 가진 `Team`을 찾아서 확인한다.
  */
 public class OneWayAssociationFindTest {
 

@@ -12,7 +12,7 @@ import jpa0.Member;
  * 엔티티 등록할 때 쓰기 지연
  * em.persist(Entity)를 호출하면,
  * 1차 캐시에 저장,
- * 쓰기 지연 SQL 저장소에 인설트(insert) 쿼리문을 저장한다.
+ * `쓰기 지연 SQL 저장소`에 인설트(insert) 쿼리문을 저장한다.
  * 트랜잭션 커밋 직전에 저장된 쿼리문을 데이터 베이스에 전달해서 회원을 등록한다.
  */
 public class PersistenceContextWriteBehind {
