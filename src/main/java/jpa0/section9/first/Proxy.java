@@ -5,6 +5,8 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
 import jpa0.Member;
+import jpa0.section6.Fellow;
+import jpa0.section6.Team;
 
 /**
  * 1. 프록시
@@ -21,7 +23,7 @@ import jpa0.Member;
  * <p>
  * 준영속 상태일 때, 프록시를 초기화하면 예외 발생
  */
-public class Proxy1 {
+public class Proxy {
 
     public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("hello");
@@ -62,9 +64,22 @@ public class Proxy1 {
             System.out.println("proxyMember instanceOf Member : " + (refMember instanceof Member));
             System.out.println("entityMember instanceOf Member : " + (findMember2 instanceof Member));
 
+            System.out.println("== em.clear ==");
+            em.clear();
+
+            //준영속 상태일 때, 프록시 초기화하면 예외 발생
+            Member member = em.getReference(Member.class, member1.getId());
+
+            em.detach(member); //준영속 상태
+
+            member.getName();
+
+            System.out.println("===");
             tx.commit();
+            System.out.println("===");
         } catch (Exception e) {
             tx.rollback();
+            e.printStackTrace();
         } finally {
             em.close();
         }
