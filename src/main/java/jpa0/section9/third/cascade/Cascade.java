@@ -30,6 +30,12 @@ public class Cascade {
 
             em.persist(parent);
 
+            em.flush();
+            em.clear();
+
+            //@XXXToYYY(cascade = cascadeType.ALL)부모를 지우면 연관된 자식도 지워진다.
+            Parent findParent = em.find(Parent.class, parent.getId());
+            em.remove(findParent);
 
             tx.commit();
         } catch (Exception e) {
