@@ -7,12 +7,17 @@ import jakarta.persistence.*;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
     private String username;
 
     @OneToOne
     private Locker locker;
+
+    public void putLocker(Locker locker) {
+        this.locker = locker;
+        locker.setUser(this);
+    }
 
     public void setId(Long id) {
         this.id = id;

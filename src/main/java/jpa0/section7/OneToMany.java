@@ -14,25 +14,31 @@ public class OneToMany {
         tx.begin();
 
         try {
-            User user = new User();
-            user.setUsername("테스트 유저");
-
             System.out.println("========1========");
-            em.persist(user);
-            System.out.println("========1========");
-
-
             Locker locker = new Locker();
             locker.setLockerNumber(5);
+
+            em.persist(locker);
+            System.out.println("========1========");
+
+
+            System.out.println("========2========");
+            User user = new User();
+            user.setUsername("테스트 유저");
             user.setLocker(locker);
 
-            System.out.println("========2========");
-            em.persist(locker);
+            em.persist(user);
             System.out.println("========2========");
 
             System.out.println("========3========");
-            tx.commit();
+            User findUser = em.find(User.class, user.getId());
+            System.out.println("유저 ID : " + user.getId());
+            System.out.println("락커 번호 : " + findUser.getLocker().getLockerNumber());
             System.out.println("========3========");
+
+            System.out.println("========4========");
+            tx.commit();
+            System.out.println("========4========");
         } catch (Exception e) {
             tx.rollback();
         } finally {
