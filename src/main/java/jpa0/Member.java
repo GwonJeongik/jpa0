@@ -1,8 +1,8 @@
 package jpa0;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import jpa0.section10.first.Address;
+import jpa0.section10.first.Period;
 
 /**
  * 2. Hello JPA - 애플리케이션 개발
@@ -18,6 +18,23 @@ public class Member {
     @GeneratedValue
     private Long id;
     private String name;
+
+    //기간 : Period
+    @Embedded
+    private Period period;
+
+    //집 주소 : Address
+    @Embedded
+    private Address homeAddress;
+
+    //직장 주소 : Address
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "city", column = @Column(name = "work_city")),
+            @AttributeOverride(name = "street", column = @Column(name = "work_street")),
+            @AttributeOverride(name = "zipCode", column = @Column(name = "work_zipCode"))
+    })
+    private Address woreAddress;
 
     public void setId(Long id) {
         this.id = id;
