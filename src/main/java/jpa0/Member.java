@@ -3,6 +3,7 @@ package jpa0;
 import jakarta.persistence.*;
 import jpa0.section10.first.Address;
 import jpa0.section10.first.Period;
+import jpa0.section10.third.AddressEntity;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -47,10 +48,9 @@ public class Member {
     @Column(name = "FOOD_NAME")
     private Set<String> favoriteFoods = new HashSet<>();
 
-    @ElementCollection
-    @CollectionTable(name = "ADDRESS", joinColumns =
-    @JoinColumn(name = "member_id"))
-    private List<Address> addressHistory = new ArrayList<>();
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "member_id")
+    private List<AddressEntity> addressEntity = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -100,11 +100,11 @@ public class Member {
         this.favoriteFoods = favoriateFoods;
     }
 
-    public List<Address> getAddressHistory() {
-        return addressHistory;
+    public List<AddressEntity> getAddressEntity() {
+        return addressEntity;
     }
 
-    public void setAddressHistory(List<Address> addressList) {
-        this.addressHistory = addressList;
+    public void setAddressEntity(List<AddressEntity> addressEntity) {
+        this.addressEntity = addressEntity;
     }
 }

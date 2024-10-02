@@ -7,9 +7,12 @@ import jakarta.persistence.Persistence;
 import jpa0.Member;
 import jpa0.section10.first.Address;
 
-import java.util.List;
 import java.util.Set;
 
+/**
+ * 3. 컬렉션 값 타입
+ *
+ */
 public class ThirdTest {
 
     public static void main(String[] args) {
@@ -24,9 +27,6 @@ public class ThirdTest {
             member1.getFavoriteFoods().add("짬뽕");
             member1.getFavoriteFoods().add("탕수육");
 
-            member1.getAddressHistory().add(new Address("old12", "거리", 10000));
-            member1.getAddressHistory().add(new Address("old22", "거리", 10000));
-
             em.persist(member1);
 
             em.flush();
@@ -39,8 +39,8 @@ public class ThirdTest {
             favoriteFoods.remove("짬뽕");
             favoriteFoods.add("한식");
 
-            findMember.getAddressHistory().remove(new Address("old12", "거리", 10000));
-            findMember.getAddressHistory().add(new Address("new", "거리", 10000));
+            findMember.getAddressEntity().add(new AddressEntity(new Address("old1212", "거리", 10000)));
+            findMember.getAddressEntity().add(new AddressEntity(new Address("new", "거리", 10000)));
 
             tx.commit();
         } catch (Exception e) {
